@@ -105,12 +105,15 @@ public class TimeTracker extends Application {
         TableColumn<TimeTrackerEntry, String> dateCol = new TableColumn<>("Date");
         TableColumn<TimeTrackerEntry, String> startTimeCol = new TableColumn<>("Start Time");
         TableColumn<TimeTrackerEntry, String> endTimeCol = new TableColumn<>("End Time");
+        TableColumn<TimeTrackerEntry, String> deltaTimeCol = new TableColumn<>("Delta Time [h]");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("dateString"));
         startTimeCol.setCellValueFactory(new PropertyValueFactory<>("startTimeString"));
         endTimeCol.setCellValueFactory(new PropertyValueFactory<>("endTimeString"));
+        deltaTimeCol.setCellValueFactory(new PropertyValueFactory<>("deltaString"));
         tableView.getColumns().add(dateCol);
         tableView.getColumns().add(startTimeCol);
         tableView.getColumns().add(endTimeCol);
+        tableView.getColumns().add(deltaTimeCol);
 
         DatePicker datePicker = new DatePicker(LocalDate.of(year, month, 1));
         datePicker.setOnAction(e -> {
@@ -127,6 +130,7 @@ public class TimeTracker extends Application {
                 switch (tableView.getSelectionModel().getSelectedCells().get(0).getColumn()) {
                     case 1 -> clipboard.setContents(new StringSelection(entry.getStartTimeString()), null);
                     case 2 -> clipboard.setContents(new StringSelection(entry.getEndTimeString()), null);
+                    case 3 -> clipboard.setContents(new StringSelection(entry.getDeltaString()), null);
                     default -> clipboard.setContents(new StringSelection(entry.getDateString()), null);
                 }
             }
@@ -134,7 +138,7 @@ public class TimeTracker extends Application {
         hBox.getChildren().addAll(startDateLabel, datePicker, copyHint);
         pane.setTop(hBox);
         splitPane.getItems().addAll(tableView, generateChart(ttMap));
-        splitPane.setDividerPosition(0, 0.21);
+        splitPane.setDividerPosition(0, 0.27);
         pane.setCenter(splitPane);
         stage.setScene(new Scene(pane, 1200, 800));
         stage.show();
