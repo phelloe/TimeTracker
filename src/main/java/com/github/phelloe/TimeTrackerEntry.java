@@ -1,4 +1,4 @@
-package app;
+package com.github.phelloe;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

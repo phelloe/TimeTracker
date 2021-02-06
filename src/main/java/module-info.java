@@ -5,5 +5,5 @@ module TimeTracker{
     requires java.datatransfer;
     requires java.desktop;
     requires com.sun.jna.platform;
-    exports app;
+    exports com.github.phelloe;
 }

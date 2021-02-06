@@ -1,4 +1,4 @@
-package app;
+package com.github.phelloe;
 
 import com.sun.jna.platform.win32.Advapi32Util;
 

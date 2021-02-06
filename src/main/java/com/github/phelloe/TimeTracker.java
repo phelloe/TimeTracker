@@ -1,4 +1,4 @@
-package app;
+package com.github.phelloe;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
