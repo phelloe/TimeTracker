@@ -55,6 +55,6 @@ public class TimeTrackerEntry {
     }
 
     public String toCSVString() {
-        return getDateString() + "," + getStartTimeString() + "," + getEndTimeString();
+        return getDateString() + ";" + getStartTimeString() + ";" + getEndTimeString();
     }
 }
