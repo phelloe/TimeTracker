@@ -11,7 +11,7 @@
 
     <properties>
         <rawGroupId>net.java.dev.jna</rawGroupId>
-        <rawArtifactId>jna</rawArtifactId>
+        <rawArtifactId>jna-platform</rawArtifactId>
         <rawVersion>5.6.0</rawVersion>
 
         <maven.compiler.target>15</maven.compiler.target>
@@ -27,7 +27,7 @@
                 <version>2.5.1</version>
                 <configuration>
                     <groupId>${project.groupId}</groupId>
-                    <artifactId>${artifactId}</artifactId>
+                    <artifactId>${project.artifactId}</artifactId>
                     <version>${project.version}</version>
                     <packaging>jar</packaging>
                     <file>${project.build.directory}/modules/${project.artifactId}-${rawVersion}.jar</file>
@@ -65,13 +65,13 @@
                                         <version>${rawVersion}</version>
                                     </artifact>
                                     <moduleInfoSource>
-                                        module com.sun.jna
+                                        module com.sun.jna.platform
                                         {
-                                        exports com.sun.jna.win32;
-                                        exports com.sun.jna;
-                                        exports com.sun.jna.ptr;
-                                        opens com.sun.jna.darwin;
+                                        exports com.sun.jna.platform.win32.COM;
+                                        exports com.sun.jna.platform.win32;
+                                        exports com.sun.jna.platform;
 
+                                        requires com.sun.jna;
                                         requires java.desktop;
                                         requires java.logging;
                                         }
